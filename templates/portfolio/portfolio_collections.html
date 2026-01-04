@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Portfolio | My Creative Business{% endblock %}
+
+{% block content %}
+<h1>Portfolio</h1>
+<p>A curated selection of my creative work, grouped into categories.</p>
+
+<div class="portfolio-grid">
+  {% for c in collections %}
+    <article class="portfolio-card">
+      <a href="{% url 'portfolio_collection' c.key %}">
+        <div class="portfolio-folder">
+          <h2>{{ c.label }}</h2>
+          <p>{{ c.total }} projects</p>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
+{% endblock %}

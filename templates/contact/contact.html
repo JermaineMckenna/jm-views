@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Contact | JM Views{% endblock %}
+
+{% block content %}
+<h1>Contact / Request a Quote</h1>
+
+{% if selected_service %}
+  <p>
+    You are enquiring about:
+    <strong>{{ selected_service.name }}</strong>
+  </p>
+  <p class="contact-location">
+    I’m based in the UK, and happy to work with clients overseas or travel for projects when required.
+  </p>
+{% else %}
+  <p>
+    Tell me a bit about your project and I’ll get back to you with next steps.
+  </p>
+  <p class="contact-location">
+    I’m based in the UK, and happy to work with clients overseas or travel for projects when required.
+  </p>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+
+  <div>
+    <label for="{{ form.name.id_for_label }}">Name</label><br>
+    {{ form.name }}
+    {% if form.name.errors %}
+      <div class="error">{{ form.name.errors }}</div>
+    {% endif %}
+  </div>
+
+  <div>
+    <label for="{{ form.email.id_for_label }}">Email</label><br>
+    {{ form.email }}
+    {% if form.email.errors %}
+      <div class="error">{{ form.email.errors }}</div>
+    {% endif %}
+  </div>
+
+  <div>
+    <label for="{{ form.phone_number.id_for_label }}">Phone (optional)</label><br>
+    {{ form.phone_number }}
+    {% if form.phone_number.errors %}
+      <div class="error">{{ form.phone_number.errors }}</div>
+    {% endif %}
+  </div>
+
+  {{ form.service }} {# hidden field, value set from ?service=ID #}
+
+  <div>
+    <label for="{{ form.budget.id_for_label }}">Approximate budget</label><br>
+    {{ form.budget }}
+    {% if form.budget.errors %}
+      <div class="error">{{ form.budget.errors }}</div>
+    {% endif %}
+  </div>
+
+  <div>
+    <label for="{{ form.timeframe.id_for_label }}">Timeframe</label><br>
+    {{ form.timeframe }}
+    {% if form.timeframe.errors %}
+      <div class="error">{{ form.timeframe.errors }}</div>
+    {% endif %}
+  </div>
+
+  <div>
+    <label for="{{ form.contact_method.id_for_label }}">Preferred contact method</label><br>
+    {{ form.contact_method }}
+    {% if form.contact_method.errors %}
+      <div class="error">{{ form.contact_method.errors }}</div>
+    {% endif %}
+  </div>
+
+  <div>
+    <label for="{{ form.reference_url.id_for_label }}">
+      Reference link (optional)
+    </label><br>
+    {{ form.reference_url }}
+    <small>For example: Instagram, website, inspiration, or similar work you like.</small>
+    {% if form.reference_url.errors %}
+      <div class="error">{{ form.reference_url.errors }}</div>
+    {% endif %}
+  </div>
+
+  <div>
+    <label for="{{ form.message.id_for_label }}">Project details</label><br>
+    {{ form.message }}
+    {% if form.message.errors %}
+      <div class="error">{{ form.message.errors }}</div>
+    {% endif %}
+  </div>
+
+  <button type="submit">Send enquiry</button>
+</form>
+
+<p class="contact-note">
+  I aim to reply to all enquiries within 1–2 business days.
+</p>
+{% endblock %}
+

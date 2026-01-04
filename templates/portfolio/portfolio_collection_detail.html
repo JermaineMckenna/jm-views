@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ collection_name }} | Portfolio | JM Views{% endblock %}
+
+{% block content %}
+  <section class="collection-header">
+    <h1>{{ collection_name }}</h1>
+    {% if collection_intro %}
+      <p>{{ collection_intro }}</p>
+    {% endif %}
+  </section>
+
+  {% for section in sections %}
+    <section class="collection-section">
+      <div class="collection-section-heading">
+        <h2>{{ section.label }}</h2>
+        <span class="collection-section-count">
+          {{ section.items|length }} project{{ section.items|length|pluralize }}
+        </span>
+      </div>
+
+      {% if section.items %}
+        <div class="collection-section-grid">
+          {% for item in section.items %}
+            {% include "partials/portfolio_card.html" with item=item %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="collection-section-empty">
+          No projects in this section yet. New work coming soon.
+        </p>
+      {% endif %}
+    </section>
+  {% endfor %}
+{% endblock %}

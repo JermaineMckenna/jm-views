@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Home | My Creative Business{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badges">
+      <span class="hero-badge">Digital Design</span>
+      <span class="hero-badge">Photography</span>
+      <span class="hero-badge">Video & 3D</span>
+    </div>
+    <h1>Creative visuals for brands, creators and events.</h1>
+    <p>
+      I combine digital design, photography and video to help you present your brand
+      professionally — from logos and social content to event coverage, photo &amp; video editing,
+      and 3D logo animation.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/services/" class="btn btn-primary">View services</a>
+      <a href="/contact/" class="btn btn-secondary">Request a quote</a>
+    </div>
+  </div>
+
+  <div class="hero-panel">
+    <h2>What I can help with</h2>
+    <ul>
+      <li>Web design &amp; digital projects</li>
+      <li>Logo design &amp; brand identity</li>
+      <li>Event &amp; on-location photography</li>
+      <li>Photo &amp; video editing for social content</li>
+      <li>3D logo animation and motion experiments</li>
+    </ul>
+  </div>
+</section>
+
+
+{# --- PHOTOGRAPHY HIGHLIGHTS STRIP --- #}
+<section class="home-section home-photography">
+  <div class="home-section-header">
+    <h2>Photography highlights</h2>
+    <p>
+      A few moments from my personal and client shoots – portraits, travel and scenic views.
+    </p>
+  </div>
+
+  <div class="photo-grid">
+    <figure class="photo-card">
+      <img src="/media/portfolio/uploads/homepage2.jpg" alt="Photography highlight 1">
+      <figcaption>Portrait &amp; lifestyle photography</figcaption>
+    </figure>
+
+    <figure class="photo-card">
+      <img src="/media/portfolio/uploads/homepage3.jpg" alt="Photography highlight 2">
+      <figcaption>Scenic &amp; coastal imagery</figcaption>
+    </figure>
+
+    <figure class="photo-card">
+      <img src="/media/portfolio/uploads/homepage4.jpg" alt="Photography highlight 3">
+      <figcaption>Documentary-style storytelling</figcaption>
+    </figure>
+  </div>
+
+  <div class="photo-actions">
+    <a href="/portfolio/collection/photo/" class="btn btn-secondary">
+      View photography portfolio
+    </a>
+  </div>
+</section>
+
+<section class="home-section drone-hero">
+  <h2>Drone & Aerial Footage</h2>
+  <p>Capturing landscapes, coastlines and locations from a cinematic aerial perspective.</p>
+
+  <div class="drone-video-wrapper">
+    <video
+      src="/media/drone_clips/droneclips2.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="drone-video"
+    ></video>
+  </div>
+
+  <div class="drone-actions">
+    <a href="/portfolio/" class="btn btn-secondary">
+      View drone portfolio
+    </a>
+  </div>
+</section>
+
+<section class="home-section">
+  <h2>Featured services</h2>
+  <p>A quick snapshot of what I offer. You can view all options on the <a href="/services/">Services</a> page.</p>
+
+  <div class="card-grid">
+    {% for service in featured_services %}
+      <article class="card">
+        <h3>
+          <a href="{% url 'service_detail' service.pk %}">
+            {{ service.name }}
+          </a>
+        </h3>
+        <div class="card-service-meta">
+          {{ service.get_category_display }}
+        </div>
+        <p>{{ service.short_description }}</p>
+        {% if service.starting_price %}
+          <p><strong>From £{{ service.starting_price }}</strong></p>
+        {% endif %}
+        <a href="{% url 'service_detail' service.pk %}" class="btn btn-secondary">View details</a>
+      </article>
+    {% empty %}
+      <p>No services added yet. Check back soon.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section">
+  <h2>Recent work</h2>
+  <p>Some examples from my portfolio. You can see everything on the <a href="/portfolio/">Portfolio</a> page.</p>
+
+  <div class="portfolio-grid">
+    {% for item in recent_work %}
+      {% include "partials/portfolio_card.html" with item=item %}
+    {% empty %}
+      <p>No portfolio items yet. Once projects are added, they’ll appear here automatically.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+

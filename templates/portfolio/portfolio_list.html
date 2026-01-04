@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio | My Creative Business{% endblock %}
+
+{% block content %}
+<h1>Portfolio</h1>
+<p>A selection of recent web projects, photography, video and 3D work.</p>
+
+{% if web_items %}
+  <h2>Web & Digital Projects</h2>
+  <div class="portfolio-grid">
+    {% for item in web_items %}
+      <article class="portfolio-card">
+        <a href="{% url 'portfolio_detail' item.pk %}">
+          <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        </a>
+        <div class="portfolio-card-body">
+          <h2>
+            <a href="{% url 'portfolio_detail' item.pk %}">
+              {{ item.title }}
+            </a>
+          </h2>
+          {% if item.service %}
+            <p><em>{{ item.service.name }}</em></p>
+          {% else %}
+            <p><em>{{ item.get_category_display }}</em></p>
+          {% endif %}
+
+          {% if item.external_url %}
+            <p>
+              <a href="{{ item.external_url }}" target="_blank" class="btn btn-secondary">
+                View project
+              </a>
+            </p>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if media_items %}
+  <h2>Photography & Media</h2>
+  <div class="portfolio-grid">
+    {% for item in media_items %}
+      <article class="portfolio-card">
+        <a href="{% url 'portfolio_detail' item.pk %}">
+          <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        </a>
+        <div class="portfolio-card-body">
+          <h2>
+            <a href="{% url 'portfolio_detail' item.pk %}">
+              {{ item.title }}
+            </a>
+          </h2>
+          <p><em>{{ item.get_category_display }}</em></p>
+
+          {% if item.external_url %}
+            <p>
+              <a href="{{ item.external_url }}" target="_blank" class="btn btn-secondary">
+                View video / gallery
+              </a>
+            </p>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if not web_items and not media_items %}
+  <p>No portfolio items added yet. Check back soon.</p>
+{% endif %}
+{% endblock %}
+

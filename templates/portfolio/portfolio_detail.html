@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.title }} | Portfolio | JM Views{% endblock %}
+
+{% block content %}
+<article class="portfolio-detail">
+  <header class="portfolio-detail-header">
+    {# Top kicker – portfolio type, e.g. DRONE & AERIAL #}
+    <p class="portfolio-detail-kicker">
+      {{ item.get_portfolio_type_display|upper }}
+    </p>
+
+    <h1>{{ item.title }}</h1>
+
+    {# Secondary meta line under the title #}
+    <p class="portfolio-meta-line">
+      {% if item.portfolio_type == "drone" %}
+        Drone &amp; aerial · Photography
+      {% else %}
+        {{ item.get_category_display }}
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="project-card">
+  <img src="{{ item.image.url }}" alt="{{ item.title }}" class="project-image">
+
+  <div class="project-meta">
+    <p>{{ item.category_display }}</p>
+    {% if item.section %}
+      <p class="project-section">{{ item.section }}</p>
+    {% endif %}
+  </div>
+</div>
+
+  {% if item.description %}
+    <div class="portfolio-detail-body">
+      {{ item.description|linebreaks }}
+    </div>
+  {% endif %}
+
+  <div class="portfolio-detail-actions">
+    {% if item.external_url %}
+      <a href="{{ item.external_url }}" target="_blank" class="btn btn-primary">
+        View full project
+      </a>
+    {% endif %}
+    <a href="{% url 'portfolio_collections' %}" class="btn btn-secondary">
+      Back to portfolio
+    </a>
+  </div>
+
+  {% if item.service %}
+    <p class="portfolio-related-service">
+      {% if item.portfolio_type == "drone" %}
+        Drone service:
+      {% else %}
+        Related service:
+      {% endif %}
+      <a href="{% url 'service_detail' item.service.pk %}">
+        {{ item.service.name }}
+      </a>
+    </p>
+  {% endif %}
+</article>
+{% endblock %}
+
+

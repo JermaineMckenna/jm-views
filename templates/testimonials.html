@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Testimonials | JM Views{% endblock %}
+
+{% block content %}
+  <h1>Client feedback & testimonials</h1>
+
+  <p class="intro-text">
+    I’m UK-based but happy to collaborate with clients internationally.
+    Below you’ll find feedback from people I’ve worked with on design,
+    photography and digital projects.
+  </p>
+
+  {% if testimonials %}
+    <section class="testimonials-grid">
+      {% for t in testimonials %}
+        <article class="testimonial-card">
+          <p class="testimonial-quote">“{{ t.quote }}”</p>
+          <p class="testimonial-name">
+            {{ t.name }}
+            {% if t.role %}
+              <span class="testimonial-role"> · {{ t.role }}</span>
+            {% endif %}
+          </p>
+        </article>
+      {% endfor %}
+    </section>
+  {% else %}
+    <p class="testimonials-empty">
+      Testimonials are coming soon.
+    </p>
+  {% endif %}
+{% endblock %}

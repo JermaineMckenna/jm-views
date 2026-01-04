@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Services | JM Views{% endblock %}
+
+{% block content %}
+  <h1>Services</h1>
+  <p>Select a service to learn more and request a quote.</p>
+
+  <div class="services-grid">
+    {% for service in services %}
+      <article class="service-card">
+        <header>
+          <h2>{{ service.name }}</h2>
+          <p class="service-card-meta">
+            {{ service.get_category_display }}
+          </p>
+        </header>
+
+        <p>{{ service.short_description }}</p>
+
+        <div class="service-card-footer">
+          {% if service.starting_price %}
+            <p>From £{{ service.starting_price }}</p>
+          {% endif %}
+          <a href="{% url 'service_detail' service.pk %}" class="btn btn-secondary">
+            View details
+          </a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% endblock %}

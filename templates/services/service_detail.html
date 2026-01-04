@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ service.name }} | My Creative Business{% endblock %}
+
+{% block content %}
+<h1>{{ service.name }}</h1>
+<p><em>{{ service.get_category_display }}</em></p>
+
+<p>{{ service.full_description|linebreaks }}</p>
+
+{% if service.starting_price %}
+  <p><strong>Starting from: £{{ service.starting_price }}</strong></p>
+{% endif %}
+
+<p>
+  <a href="{% url 'contact' %}?service={{ service.pk }}" class="btn">
+    Request this service
+  </a>
+</p>
+{% endblock %}
+

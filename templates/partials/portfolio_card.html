@@ -1,0 +1,22 @@
+<article class="portfolio-card">
+  <a href="{% url 'portfolio_detail' item.pk %}">
+    <div class="portfolio-card-image-wrap">
+      <img src="{{ item.image.url }}" alt="{{ item.title }}">
+    </div>
+  </a>
+
+  <div class="portfolio-card-body">
+    <h3>
+      <a href="{% url 'portfolio_detail' item.pk %}">
+        {{ item.title }}
+      </a>
+    </h3>
+
+    <p class="portfolio-card-meta">
+      {{ item.get_category_display }}
+      {% if item.section %}
+        · {{ item.get_section_display }}
+      {% endif %}
+    </p>
+  </div>
+</article>
