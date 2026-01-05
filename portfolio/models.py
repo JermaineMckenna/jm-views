@@ -79,6 +79,11 @@ class PortfolioItem(models.Model):
         help_text='Optional link to the live site, video or external project page.'
     )
 
+    show_on_homepage = models.BooleanField(
+        default=False,
+        help_text="Show this item in the homepage photography highlights strip."
+    )
+
     is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
