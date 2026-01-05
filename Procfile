@@ -1,1 +1,1 @@
-web: gunicorn creative_business.wsgi:application
+web: gunicorn creative_business.wsgi
