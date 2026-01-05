@@ -2,15 +2,15 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # ...existing paths...
-    path("testimonials/", views.testimonials, name="testimonials"),
-    
-    # Folder / collections view
-    path('', views.portfolio_collections, name='portfolio_collections'),
+    # /portfolio/
+    path("", views.portfolio_list, name="portfolio_list"),
 
-    # Items inside a specific folder/collection
-    path('collection/<str:collection_key>/', views.portfolio_collection_detail, name='portfolio_collection'),
+    # /portfolio/collections/
+    path("collections/", views.portfolio_collections, name="portfolio_collections"),
 
-    # Individual portfolio item detail page
-    path('<int:pk>/', views.portfolio_detail, name='portfolio_detail'),
+    # /portfolio/collection/photo/  (or web, drone, etc.)
+    path("collection/<str:key>/", views.portfolio_collection, name="portfolio_collection"),
+
+    # /portfolio/7/
+    path("<int:pk>/", views.portfolio_detail, name="portfolio_detail"),
 ]

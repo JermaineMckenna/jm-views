@@ -45,22 +45,20 @@
     </p>
   </div>
 
-  <div class="photo-grid">
-    {% for item in photography_items %}
-      <figure class="photo-card">
-        <img src="{{ item.image.url }}" alt="{{ item.title }}">
-        <figcaption>
-          {% if item.section %}
-            {{ item.section }}
-          {% else %}
-            {{ item.title }}
-          {% endif %}
-        </figcaption>
-      </figure>
-    {% empty %}
-      <p>No highlighted photography items yet. Mark some items as "Show on homepage" in the Portfolio admin.</p>
-    {% endfor %}
-  </div>
+  {% if homepage_items %}
+    <div class="photo-grid">
+      {% for item in homepage_items %}
+        <figure class="photo-card">
+          <img src="{{ item.image.url }}" alt="{{ item.title }}">
+          <figcaption>
+            {{ item.section|default:item.title }}
+          </figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No highlighted photography items yet. You can mark items to show here in the admin.</p>
+  {% endif %}
 
   <div class="photo-actions">
     <a href="/portfolio/collection/photo/" class="btn btn-secondary">
