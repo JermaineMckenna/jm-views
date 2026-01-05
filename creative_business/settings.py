@@ -8,7 +8,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key-change-later")
 
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com" "jmviews.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com" "jmviews.herokuapp.com" "jm-views-263a13e40c31.herokuapp.com"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
