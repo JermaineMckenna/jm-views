@@ -267,25 +267,34 @@ p {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+  justify-items: center;
 }
 
-.photo-card {
+/* ---------- Shared card styling (photo & portfolio cards) ---------- */
+
+.photo-card,
+.portfolio-card {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
-.photo-card img {
+.photo-card img,
+.portfolio-card-image-wrap img {
   width: 100%;
   height: 260px;
   object-fit: cover;
   display: block;
 }
 
-.photo-card figcaption {
+.photo-card figcaption,
+.portfolio-card-body {
   padding: 0.75rem 1rem 1rem;
   font-size: 0.9rem;
   color: #555;
@@ -295,6 +304,7 @@ p {
   text-align: center;
   margin-top: 1.5rem;
 }
+
 /* ---------- Services & portfolio grids ---------- */
 
 /* Shared grid wrapper (home + services page) */
@@ -350,6 +360,8 @@ p {
   text-align: center;
 }
 
+/* ---------- DRONE SECTION ---------- */
+
 .drone-hero {
   margin-top: 3rem;
 }
@@ -378,27 +390,14 @@ p {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+  justify-items: center;
 }
 
 .portfolio-card {
-  background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
   border: 1px solid var(--border-soft);
-}
-
-.portfolio-card-image-wrap img {
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  display: block;
-}
-
-.portfolio-card-body {
-  padding: 0.85rem 1rem 1rem;
 }
 
 .portfolio-card-body p {
