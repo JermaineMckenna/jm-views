@@ -1,0 +1,870 @@
+/* Global reset-ish */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f5f7;
+  --bg-card: #ffffff;
+  --text-main: #1f2933;
+  --text-muted: #6b7280;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+  --border-soft: #e5e7eb;
+}
+
+/* Base layout */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+/* Navbar */
+
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Creative studio logo */
+
+.logo {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Rounded creative-style mark */
+.logo-mark {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+/* Clean studio typography */
+.logo-name {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* Page structure */
+
+main.container {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Messages */
+
+.messages {
+  list-style: none;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem 0;
+  background: #e9ffe9;
+  border: 1px solid #b2e0b2;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* Typography */
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+p {
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+/* Optional short intro block on About page */
+
+.about-intro {
+  max-width: 680px;
+  margin-bottom: 1.5rem;
+  font-size: 0.98rem;
+  color: var(--text-muted);
+}
+
+/* Hero section (home page) */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 0 2.5rem;
+}
+
+.hero-text p {
+  color: var(--text-muted);
+}
+
+.hero-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.hero-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-panel {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-soft);
+  font-size: 0.9rem;
+}
+
+.hero-panel ul {
+  padding-left: 1.1rem;
+  margin: 0.25rem 0 0;
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: var(--text-main);
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+  text-decoration: none;
+}
+
+/* Section spacing */
+
+.home-section {
+  margin-top: 2.5rem;
+}
+
+.home-section h2 {
+  margin-bottom: 0.35rem;
+}
+
+.home-section p {
+  max-width: 640px;
+}
+
+/* ---------- PHOTOGRAPHY HIGHLIGHTS SECTION ---------- */
+
+.home-photography {
+  margin-top: 2.5rem;
+}
+
+.home-section-header {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+}
+
+/* About-page logo */
+
+.about-logo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.about-logo img {
+  max-width: 220px;
+  height: auto;
+  display: inline-block;
+}
+
+/* ---------- PHOTO GRID (home) ---------- */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.photo-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-card figcaption {
+  padding: 0.75rem 1rem 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.photo-actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+/* ---------- Services & portfolio grids ---------- */
+
+/* Shared grid wrapper (home + services page) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Generic card base */
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+}
+
+.card p {
+  font-size: 0.95rem;
+}
+
+/* Service cards – text at top, footer at bottom */
+.card-service {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-service header {
+  margin-bottom: 0.6rem;
+}
+
+.card-service-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* Price + button aligned along the bottom of equal-height cards */
+.card-service-footer {
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+.card-service-footer p {
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+}
+
+.card-service-footer .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.drone-hero {
+  margin-top: 3rem;
+}
+
+.drone-video-wrapper {
+  max-width: 1000px;
+  margin: 1rem auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+.drone-video {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.drone-actions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ---------- PORTFOLIO CARDS (used on home + collections) ---------- */
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+  border: 1px solid var(--border-soft);
+}
+
+.portfolio-card-image-wrap img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio-card-body {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.portfolio-card-body p {
+  font-size: 0.9rem;
+}
+
+/* Meta line under the title (Photography · Portraits & Lifestyle) */
+.portfolio-card-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+/* ---------- CASE STUDY / PROJECT CARD (if used elsewhere) ---------- */
+
+.project-card {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.project-card img,
+.project-card video {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-meta {
+  padding: 1.2rem 1.6rem 1.6rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.project-section {
+  margin-top: 0.25rem;
+  opacity: 0.8;
+}
+
+/* ---------- Portfolio detail (single project page) ---------- */
+
+.portfolio-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.portfolio-detail-header {
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-detail-kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin: 0 0 0.3rem;
+}
+
+.portfolio-detail h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.8rem;
+}
+
+.portfolio-detail-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Big image on project detail page */
+.portfolio-detail img,
+.portfolio-detail-media img,
+.portfolio-video {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 1rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+}
+
+.portfolio-detail-body {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-main);
+}
+
+.portfolio-detail-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.portfolio-detail-service {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.portfolio-back-link {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.portfolio-back-link:hover {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* ---------- Portfolio sections / collections ---------- */
+
+.portfolio-section {
+  margin-top: 0.25rem;
+  opacity: 0.8;
+}
+
+.portfolio-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-section-header h2 {
+  margin-bottom: 0;
+}
+
+.portfolio-section-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.portfolio-section-empty {
+  font-style: italic;
+}
+
+.collection-header {
+  margin-bottom: 2rem;
+}
+
+.collection-header p {
+  max-width: 640px;
+  color: var(--text-muted);
+}
+
+/* Each sub-section block (e.g. Portraits & Lifestyle) */
+.collection-section {
+  margin-bottom: 3rem;
+}
+
+.collection-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.collection-section-heading h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.collection-section-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Grid of cards inside each section */
+.collection-section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.collection-section-empty {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.section-heading {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 0.2px;
+}
+
+/* ---------- Contact page helpers ---------- */
+
+.contact-location {
+  max-width: 640px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.contact-note {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Testimonials (ready for future use) ---------- */
+
+.testimonials {
+  margin-top: 3rem;
+}
+
+.testimonials-intro {
+  max-width: 640px;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  font-size: 0.93rem;
+}
+
+.testimonial-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.testimonial-quote {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.testimonial-role {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-left: 0.25rem;
+}
+
+/* ---------- Responsive: portfolio detail + footer + hero ---------- */
+
+@media (max-width: 768px) {
+  .portfolio-detail {
+    max-width: 100%;
+  }
+
+  .portfolio-detail-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Forms */
+
+form div {
+  margin-bottom: 1rem;
+}
+
+form label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="url"],
+form select,
+form textarea {
+  width: 100%;
+  max-width: 480px;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+form small {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+button[type="submit"] {
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+/* Footer – upgraded studio style */
+
+.footer {
+  background: #fafafb;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 3rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+  padding-top: 1.7rem;
+  padding-bottom: 1.7rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 320px;
+}
+
+.footer-column h4 {
+  font-size: 0.9rem;
+  margin: 0 0 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.footer-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-column li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.footer-column a:hover {
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 0.9rem 1rem 1.2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-soft);
+}
+
+.footer-social {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.footer-social a {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  transition: 0.2s ease-in-out;
+}
+
+.footer-social a:hover {
+  color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+.social-links {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.social-icon {
+  width: 22px;
+  height: 22px;
+  fill: #6b7280;
+  transition: fill 0.2s, transform 0.15s;
+}
+
+.social-links a:hover .social-icon {
+  fill: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Footer responsive */
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---- Final overrides for Services layout ---- */
+
+.service-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 260px;   /* layout */
+  max-width: 320px;
+  margin: 0;
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.service-card-footer {
+  margin-top: auto;      /* pushes price + button to bottom */
+  padding-top: 0.9rem;
+}
+
+.service-card-footer .btn {
+  width: 100%;
+  text-align: center;
+}
