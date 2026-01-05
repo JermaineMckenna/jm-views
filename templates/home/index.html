@@ -38,52 +38,55 @@
 
 {# --- PHOTOGRAPHY HIGHLIGHTS STRIP --- #}
 <section class="home-section home-photography">
-  <div class="home-section-header">
-    <h2>Photography highlights</h2>
-    <p>
-      A few moments from my personal and client shoots – portraits, travel and scenic views.
-    </p>
-  </div>
+  <div class="home-section-header">
+    <h2>Photography highlights</h2>
+    <p>
+      A few moments from my personal and client shoots – portraits, travel and scenic views.
+    </p>
+  </div>
 
-  {% if homepage_items %}
-    <div class="photo-grid">
-      {% for item in homepage_items %}
-        <figure class="photo-card">
-          <img src="{{ item.image.url }}" alt="{{ item.title }}">
-          <figcaption>
-            {{ item.section|default:item.title }}
-          </figcaption>
-        </figure>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>No highlighted photography items yet. You can mark items to show here in the admin.</p>
-  {% endif %}
+  <div class="photo-grid">
+    {% for item in homepage_photos %}
+      <figure class="photo-card">
+        <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        <figcaption>
+          {% if item.section %}
+            {{ item.section }}
+          {% else %}
+            {{ item.title }}
+          {% endif %}
+        </figcaption>
+      </figure>
+    {% empty %}
+      <p style="text-align:center;">Once you mark items as “Show on homepage”, they’ll appear here.</p>
+    {% endfor %}
+  </div>
 
-  <div class="photo-actions">
-    <a href="/portfolio/collection/photo/" class="btn btn-secondary">
-      View photography portfolio
-    </a>
-  </div>
+  <div class="photo-actions">
+    <a href="/portfolio/collection/photo/" class="btn btn-secondary">
+      View photography portfolio
+    </a>
+  </div>
 </section>
 
+{# --- DRONE / VIDEO SECTION (VIMEO) --- #}
 <section class="home-section drone-hero">
   <h2>Drone &amp; Aerial Footage</h2>
   <p>Capturing landscapes, coastlines and locations from a cinematic aerial perspective.</p>
 
   <div class="drone-video-wrapper">
-    <video
-      src="{% static 'drone_clips/droneclips2.mp4' %}"
-      autoplay
-      muted
-      loop
-      playsinline
+    {# Replace VIDEO_ID_HERE with your actual Vimeo video ID #}
+    <iframe
       class="drone-video"
-    ></video>
+      src="https://player.vimeo.com/video/VIDEO_ID_HERE?background=1&autoplay=1&loop=1&muted=1"
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <div class="drone-actions">
-    <a href="/portfolio/" class="btn btn-secondary">
+    <a href="/portfolio/collection/drone/" class="btn btn-secondary">
       View drone portfolio
     </a>
   </div>
@@ -95,20 +98,26 @@
 
   <div class="card-grid">
     {% for service in featured_services %}
-      <article class="card">
-        <h3>
-          <a href="{% url 'service_detail' service.pk %}">
-            {{ service.name }}
-          </a>
-        </h3>
-        <div class="card-service-meta">
-          {{ service.get_category_display }}
-        </div>
+      <article class="card card-service">
+        <header>
+          <h3>
+            <a href="{% url 'service_detail' service.pk %}">
+              {{ service.name }}
+            </a>
+          </h3>
+          <div class="card-service-meta">
+            {{ service.get_category_display }}
+          </div>
+        </header>
+
         <p>{{ service.short_description }}</p>
-        {% if service.starting_price %}
-          <p><strong>From £{{ service.starting_price }}</strong></p>
-        {% endif %}
-        <a href="{% url 'service_detail' service.pk %}" class="btn btn-secondary">View details</a>
+
+        <div class="card-service-footer">
+          {% if service.starting_price %}
+            <p><strong>From £{{ service.starting_price }}</strong></p>
+          {% endif %}
+          <a href="{% url 'service_detail' service.pk %}" class="btn btn-secondary">View details</a>
+        </div>
       </article>
     {% empty %}
       <p>No services added yet. Check back soon.</p>
