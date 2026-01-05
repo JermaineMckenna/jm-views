@@ -38,31 +38,35 @@
 
 {# --- PHOTOGRAPHY HIGHLIGHTS STRIP --- #}
 <section class="home-section home-photography">
-  <div class="home-section-header">
-    <h2>Photography highlights</h2>
-    <p>
-      A few moments from my personal and client shoots – portraits, travel and scenic views.
-    </p>
-  </div>
+  <div class="home-section-header">
+    <h2>Photography highlights</h2>
+    <p>
+      A few moments from my personal and client shoots – portraits, travel and scenic views.
+    </p>
+  </div>
 
-  <div class="photo-grid">
-  {% if homepage_highlights %}
-    {% for item in homepage_highlights %}
+  <div class="photo-grid">
+    {% for item in photography_items %}
       <figure class="photo-card">
         <img src="{{ item.image.url }}" alt="{{ item.title }}">
-        <figcaption>{{ item.title }}</figcaption>
+        <figcaption>
+          {% if item.section %}
+            {{ item.section }}
+          {% else %}
+            {{ item.title }}
+          {% endif %}
+        </figcaption>
       </figure>
+    {% empty %}
+      <p>No highlighted photography items yet. Mark some items as "Show on homepage" in the Portfolio admin.</p>
     {% endfor %}
-  {% else %}
-    <p>No homepage highlights selected yet.</p>
-  {% endif %}
-</div>
+  </div>
 
-  <div class="photo-actions">
-    <a href="/portfolio/collection/photo/" class="btn btn-secondary">
-      View photography portfolio
-    </a>
-  </div>
+  <div class="photo-actions">
+    <a href="/portfolio/collection/photo/" class="btn btn-secondary">
+      View photography portfolio
+    </a>
+  </div>
 </section>
 
 <section class="home-section drone-hero">
