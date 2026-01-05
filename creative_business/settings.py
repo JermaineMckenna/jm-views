@@ -4,12 +4,19 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# === SECURITY ===
 SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key-change-later")
-
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".herokuapp.com", "jmviews.herokuapp.com", "jm-views-263a13e40c31.herokuapp.com",]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".herokuapp.com",
+    "jmviews.herokuapp.com",
+    "jm-views-263a13e40c31.herokuapp.com",
+]
 
+# === APPS ===
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -18,14 +25,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
-    'cloudinary',
-    'cloudinary_storage',
+    "cloudinary",
+    "cloudinary_storage",
+
     "home",
     "services",
     "contact",
     "portfolio",
 ]
 
+# === MIDDLEWARE ===
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -40,7 +49,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = "creative_business.urls"
 
 TEMPLATES = [
-{
+    {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
@@ -57,6 +66,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "creative_business.wsgi.application"
 
+# === DATABASE ===
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -70,21 +80,29 @@ if "DATABASE_URL" in os.environ:
         ssl_require=True,
     )
 
+# === INTERNATIONALIZATION ===
 LANGUAGE_CODE = "en-gb"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
+# === STATIC FILES ===
 STATIC_URL = "/static/"
-
 STATICFILES_DIRS = [BASE_DIR / "static"]
-
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# === MEDIA / CLOUDINARY ===
 MEDIA_URL = "/media/"
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_ROOT = BASE_DIR / "media"
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
