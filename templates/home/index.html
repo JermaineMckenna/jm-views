@@ -94,11 +94,11 @@
 
 <section class="home-section">
   <h2>Featured services</h2>
-  <p>A quick snapshot of what I offer. You can view all options on the <a href="/services/">Services</a> page.</p>
+  <p>A quick snapshot of what I offer. You can view all options on the Services page.</p>
 
-  <div class="card-grid">
+  <div class="services-grid">
     {% for service in featured_services %}
-      <article class="card card-service">
+      <article class="service-card">
         <header>
           <h3>
             <a href="{% url 'service_detail' service.pk %}">
@@ -112,11 +112,13 @@
 
         <p>{{ service.short_description }}</p>
 
-        <div class="card-service-footer">
+        <div class="service-card-footer">
           {% if service.starting_price %}
             <p><strong>From £{{ service.starting_price }}</strong></p>
           {% endif %}
-          <a href="{% url 'service_detail' service.pk %}" class="btn btn-secondary">View details</a>
+          <a href="{% url 'service_detail' service.pk %}" class="btn btn-secondary">
+            View details
+          </a>
         </div>
       </article>
     {% empty %}
