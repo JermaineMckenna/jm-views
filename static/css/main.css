@@ -358,6 +358,17 @@ p {
   align-items: stretch;
 }
 
+/* ---- Final layout for Services + Featured services ---- */
+
+/* Grid wrapper used on the Services page and for "Featured services" on home */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+/* Individual service card */
 .service-card {
   background: var(--bg-card);
   border-radius: 12px;
@@ -365,26 +376,28 @@ p {
   border: 1px solid var(--border-soft);
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
 
+  /* layout */
   display: flex;
   flex-direction: column;
-  flex: 1 1 260px;
-  max-width: 320px;
-  margin: 0;
+  height: 100%;
 }
 
+/* Keep your existing footer behaviour – price + button pinned to bottom */
 .service-card-footer {
   margin-top: auto;
   padding-top: 0.9rem;
 }
 
-.service-card-footer p {
-  margin: 0 0 0.6rem;
-  font-weight: 600;
-}
-
 .service-card-footer .btn {
   width: 100%;
   text-align: center;
+}
+
+/* Slight tightening on large screens so the 3-across row feels balanced */
+@media (min-width: 1200px) {
+  .services-grid {
+    gap: 2rem;
+  }
 }
 
 /* ========== DRONE HERO SECTION ========== */
