@@ -309,66 +309,21 @@ p {
   margin-top: 1.5rem;
 }
 
-/* ========== CARD GRIDS (HOME + SERVICES) ========== */
+/* ---------- Services & portfolio grids (shared) ---------- */
 
-/* Shared grid wrapper */
+/* Shared grid wrapper used on:
+   - Home "Featured services" section
+   - Services page
+*/
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  gap: 1.8rem;
   align-items: stretch;
 }
 
-/* Generic card */
-.card {
-  background: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.25rem 1.3rem;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-
-  /* Make all cards equal height in a row */
-  display: flex;
-  flex-direction: column;
-}
-
-.card p {
-  font-size: 0.95rem;
-}
-
-/* Meta line for service category on cards */
-.card-service-meta {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 0.4rem;
-}
-
-/* Make the price + button sit at the bottom of the card */
-.card .btn {
-  margin-top: 0.9rem;
-  align-self: flex-start;
-}
-
-/* ========== SERVICES PAGE SPECIAL LAYOUT ========== */
-
-.services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-/* ---- Final layout for Services + Featured services ---- */
-
-/* Grid wrapper used on the Services page and for "Featured services" on home */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.75rem;
-  align-items: stretch;
-}
-
-/* Individual service card */
+/* Generic card base */
+.card,
 .service-card {
   background: var(--bg-card);
   border-radius: 12px;
@@ -376,21 +331,55 @@ p {
   border: 1px solid var(--border-soft);
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
 
-  /* layout */
+  /* so cards can stretch evenly in grid */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Service cards – text at top, footer pinned to bottom */
+.card-service,
+.service-card {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-/* Keep your existing footer behaviour – price + button pinned to bottom */
+.card-service header,
+.service-card header {
+  margin-bottom: 0.6rem;
+}
+
+.card-service-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+/* Price + button row at the bottom */
+.card-service-footer,
 .service-card-footer {
   margin-top: auto;
   padding-top: 0.9rem;
 }
 
+.card-service-footer p,
+.service-card-footer p {
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+}
+
+.card-service-footer .btn,
 .service-card-footer .btn {
   width: 100%;
   text-align: center;
+}
+
+/* If your services page still uses .services-grid, keep it aligned too */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  align-items: stretch;
 }
 
 /* Slight tightening on large screens so the 3-across row feels balanced */
