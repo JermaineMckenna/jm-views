@@ -311,82 +311,77 @@ p {
 
 /* ---------- Services & portfolio grids (shared) ---------- */
 
-/* Shared grid wrapper used on:
-   - Home "Featured services" section
-   - Services page
+/* Shared layout for service cards
+   - used on the homepage "Featured services"
+   - and on the Services page
 */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.8rem;
-  align-items: stretch;
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.75rem;
 }
 
-/* Generic card base */
+/* Generic card base – you can still use .card elsewhere if needed */
 .card,
 .service-card {
   background: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.25rem 1.3rem;
+  border-radius: 16px;
+  padding: 1.4rem 1.5rem;
   border: 1px solid var(--border-soft);
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-
-  /* so cards can stretch evenly in grid */
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
   display: flex;
   flex-direction: column;
 }
 
-/* Service cards – text at top, footer pinned to bottom */
-.card-service,
+/* Individual service card */
 .service-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex: 1 1 280px;   /* responsive width */
+  max-width: 340px;  /* don’t get too wide */
+  min-height: 260px;
 }
 
-.card-service header,
-.service-card header {
-  margin-bottom: 0.6rem;
+.service-card header h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.service-card header a {
+  text-decoration: none;
+}
+
+.service-card header a:hover {
+  text-decoration: underline;
 }
 
 .card-service-meta {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
 }
 
-/* Price + button row at the bottom */
-.card-service-footer,
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+/* Price + button row pinned to bottom */
 .service-card-footer {
   margin-top: auto;
-  padding-top: 0.9rem;
+  padding-top: 1rem;
 }
 
-.card-service-footer p,
 .service-card-footer p {
   margin: 0 0 0.6rem;
   font-weight: 600;
 }
 
-.card-service-footer .btn,
 .service-card-footer .btn {
   width: 100%;
   text-align: center;
-}
-
-/* If your services page still uses .services-grid, keep it aligned too */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.8rem;
-  align-items: stretch;
-}
-
-/* Slight tightening on large screens so the 3-across row feels balanced */
-@media (min-width: 1200px) {
-  .services-grid {
-    gap: 2rem;
-  }
 }
 
 /* ========== DRONE HERO SECTION ========== */
@@ -843,6 +838,80 @@ button[type="submit"]:hover {
 }
 
 /* ========== RESPONSIVE ========== */
+/* ---------- Services & portfolio grids (shared) ---------- */
+
+/* Shared layout for service cards
+   - used on the homepage "Featured services"
+   - and on the Services page
+*/
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.75rem;
+}
+
+/* Generic card base – you can still use .card elsewhere if needed */
+.card,
+.service-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual service card */
+.service-card {
+  flex: 1 1 280px;   /* responsive width */
+  max-width: 340px;  /* don’t get too wide */
+  min-height: 260px;
+}
+
+.service-card header h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.service-card header a {
+  text-decoration: none;
+}
+
+.service-card header a:hover {
+  text-decoration: underline;
+}
+
+.card-service-meta {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+/* Price + button row pinned to bottom */
+.service-card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.service-card-footer p {
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+}
+
+.service-card-footer .btn {
+  width: 100%;
+  text-align: center;
+}
 
 @media (max-width: 768px) {
   .navbar .container {
@@ -866,5 +935,9 @@ button[type="submit"]:hover {
 @media (max-width: 480px) {
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    justify-content: center;
   }
 }
