@@ -33,16 +33,10 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Main page container */
 .container {
-  max-width: 1120px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem;
-}
-
-main.container {
-  padding-top: 2rem;
-  padding-bottom: 3rem;
+  padding: 1rem 1.5rem;
 }
 
 /* Navbar */
@@ -70,7 +64,6 @@ main.container {
   gap: 6px;
 }
 
-/* Rounded creative-style mark */
 .logo-mark {
   background: var(--accent);
   color: #ffffff;
@@ -80,7 +73,6 @@ main.container {
   letter-spacing: 0.5px;
 }
 
-/* Clean studio typography */
 .logo-name {
   color: var(--text-main);
   font-weight: 700;
@@ -102,6 +94,13 @@ main.container {
 .nav-links a:hover {
   color: var(--text-main);
   text-decoration: none;
+}
+
+/* Page structure */
+
+main.container {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
 }
 
 /* Messages */
@@ -149,9 +148,7 @@ p {
   grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
   gap: 2rem;
   align-items: center;
-  padding: 2rem 0 2.5rem;
-  max-width: 960px;
-  margin: 0 auto 2.5rem; /* centers hero inside the page */
+  padding: 2.5rem 0 2.75rem;
 }
 
 .hero-text p {
@@ -228,10 +225,7 @@ p {
 /* Section spacing */
 
 .home-section {
-  margin-top: 2.5rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto; /* centers sections like Photography, Drone, Featured services */
+  margin-top: 3rem;
 }
 
 .home-section h2 {
@@ -245,7 +239,7 @@ p {
 /* ---------- PHOTOGRAPHY HIGHLIGHTS SECTION ---------- */
 
 .home-photography {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .home-section-header {
@@ -273,7 +267,7 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
-  justify-content: center; /* keeps three cards nicely centered */
+  align-items: stretch;
 }
 
 .photo-card {
@@ -303,33 +297,21 @@ p {
 
 /* ---------- Services & portfolio grids ---------- */
 
-/* Shared grid wrapper (home + services page) */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   align-items: stretch;
-  justify-content: center;
 }
 
 /* Generic card base */
+
 .card {
   background: var(--bg-card);
   border-radius: 12px;
   padding: 1.25rem 1.3rem;
   border: 1px solid var(--border-soft);
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-
-  display: flex;
-  flex-direction: column;
-}
-
-/* Make all cards visually same height in a row */
-.card,
-.portfolio-card,
-.photo-card,
-.service-card {
-  min-height: 260px;
 }
 
 .card p {
@@ -337,6 +319,7 @@ p {
 }
 
 /* Service cards – text at top, footer at bottom */
+
 .card-service {
   display: flex;
   flex-direction: column;
@@ -352,7 +335,6 @@ p {
   margin-bottom: 0.4rem;
 }
 
-/* Price + button aligned along the bottom of equal-height cards */
 .card-service-footer {
   margin-top: auto;
   padding-top: 0.9rem;
@@ -368,42 +350,7 @@ p {
   text-align: center;
 }
 
-/* Dedicated services grid (services page) */
-
-.services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: stretch;
-  justify-content: center;
-}
-
-/* Slightly narrower service card so they line up in nice columns */
-.service-card {
-  background: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.25rem 1.3rem;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 260px;
-  max-width: 320px;
-  margin: 0;
-}
-
-.service-card-footer {
-  margin-top: auto;     /* pushes price + button to bottom */
-  padding-top: 0.9rem;
-}
-
-.service-card-footer .btn {
-  width: 100%;
-  text-align: center;
-}
-
-/* ---------- Drone home section ---------- */
+/* ---------- Drone hero (home) ---------- */
 
 .drone-hero {
   margin-top: 3rem;
@@ -435,7 +382,7 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
-  justify-content: center;
+  align-items: stretch;
 }
 
 .portfolio-card {
@@ -444,9 +391,6 @@ p {
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
   border: 1px solid var(--border-soft);
-
-  display: flex;
-  flex-direction: column;
 }
 
 .portfolio-card-image-wrap img {
@@ -458,21 +402,19 @@ p {
 
 .portfolio-card-body {
   padding: 0.85rem 1rem 1rem;
-  flex: 1 0 auto;
 }
 
 .portfolio-card-body p {
   font-size: 0.9rem;
 }
 
-/* Meta line under the title (Photography · Portraits & Lifestyle) */
 .portfolio-card-meta {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-top: 0.2rem;
 }
 
-/* ---------- CASE STUDY / PROJECT CARD (if used elsewhere) ---------- */
+/* ---------- CASE STUDY / PROJECT CARD ---------- */
 
 .project-card {
   max-width: 1200px;
@@ -533,6 +475,7 @@ p {
 }
 
 /* Big image on project detail page */
+
 .portfolio-detail img,
 .portfolio-detail-media img,
 .portfolio-video {
@@ -614,6 +557,7 @@ p {
 }
 
 /* Each sub-section block (e.g. Portraits & Lifestyle) */
+
 .collection-section {
   margin-bottom: 3rem;
 }
@@ -636,11 +580,11 @@ p {
 }
 
 /* Grid of cards inside each section */
+
 .collection-section-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-  justify-content: center;
 }
 
 .collection-section-empty {
@@ -721,33 +665,7 @@ p {
   margin-left: 0.25rem;
 }
 
-/* ---------- Responsive: portfolio detail + footer + hero ---------- */
-
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-  }
-
-  .hero-panel {
-    margin-top: 1rem;
-  }
-
-  .portfolio-detail {
-    max-width: 100%;
-  }
-
-  .portfolio-detail-footer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .services-grid {
-    justify-content: stretch;
-  }
-}
-
-/* Forms */
+/* ---------- Forms ---------- */
 
 form div {
   margin-bottom: 1rem;
@@ -791,7 +709,7 @@ button[type="submit"]:hover {
   background: #1d4ed8;
 }
 
-/* Footer – upgraded studio style */
+/* ---------- Footer ---------- */
 
 .footer {
   background: #fafafb;
@@ -889,10 +807,33 @@ button[type="submit"]:hover {
   transform: translateY(-2px);
 }
 
-/* Footer responsive */
+/* ---------- Responsive tweaks ---------- */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 768px) {
+  .portfolio-detail {
+    max-width: 100%;
+  }
+
+  .portfolio-detail-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .hero {
+    padding-top: 1.8rem;
+  }
+}
+
+body {
+  outline: 4px solid red;
 }
