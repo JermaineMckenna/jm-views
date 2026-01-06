@@ -310,21 +310,9 @@ p {
   margin-top: 1.5rem;
 }
 
-/* ---------- Services & portfolio grids (shared) ---------- */
+/* ---------- Services & shared cards ---------- */
 
-/* Wrapper used on:
-   - Home "Featured services" section
-   - /services/ page
-*/
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.75rem;
-  margin-top: 1.75rem;
-  align-items: stretch; /* all cards same column height */
-}
-
-/* Generic card base – reused for services & other cards */
+/* Base card style (used for services & others) */
 .card,
 .service-card {
   background: var(--bg-card);
@@ -334,10 +322,26 @@ p {
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
   display: flex;
   flex-direction: column;
-  height: 100%; /* fill the grid cell */
 }
 
-/* Individual service card */
+/* Grid for:
+   - Home "Featured services"
+   - /services/ page
+   Forces 3 columns on desktop, 2 on tablet, 1 on mobile.
+*/
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 across on large screens */
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+/* individual service card */
+.service-card {
+  min-height: 260px;
+}
+
 .service-card header h3 {
   margin: 0 0 0.25rem;
   font-size: 1rem;
@@ -364,7 +368,7 @@ p {
   color: var(--text-main);
 }
 
-/* Price + button row pinned to bottom */
+/* Price + button pinned to bottom */
 .service-card-footer {
   margin-top: auto;
   padding-top: 1rem;
@@ -378,6 +382,19 @@ p {
 .service-card-footer .btn {
   width: 100%;
   text-align: center;
+}
+
+/* Responsive columns for services grid */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========== DRONE HERO SECTION ========== */
@@ -834,10 +851,10 @@ button[type="submit"]:hover {
 
 /* ========== RESPONSIVE ========== */
 
-/* Desktop hero: two columns */
+/* Desktop: hero text and "What I can help with" side by side */
 @media (min-width: 900px) {
   .hero {
-    flex-direction: row;        /* text + “what I can help with” side-by-side */
+    flex-direction: row;
     align-items: flex-start;
     text-align: left;
     gap: 3rem;
@@ -859,7 +876,7 @@ button[type="submit"]:hover {
   .hero-panel {
     flex: 1;
     max-width: 380px;
-    margin-top: 0;              /* no extra gap when beside text */
+    margin-top: 0;
   }
 }
 
