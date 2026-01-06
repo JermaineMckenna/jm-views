@@ -146,12 +146,13 @@ p {
 
 /* Make the hero a centered column on all screen sizes. */
 .hero {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 2.5rem auto 3rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;   /* mobile: stacked */
   align-items: center;
   text-align: center;
+  gap: 2rem;
 }
 
 /* Hero badges, heading, copy */
@@ -311,19 +312,7 @@ p {
 
 /* ---------- Services & portfolio grids (shared) ---------- */
 
-/* Shared layout for service cards
-   - used on the homepage "Featured services"
-   - and on the Services page
-*/
-.services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1.75rem;
-}
-
-/* Generic card base – you can still use .card elsewhere if needed */
+/* Generic card base – reused for services & other cards */
 .card,
 .service-card {
   background: var(--bg-card);
@@ -335,10 +324,20 @@ p {
   flex-direction: column;
 }
 
-/* Individual service card */
+/* Shared grid for services
+   - homepage "Featured services"
+   - /services/ page
+*/
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.75rem;
+  margin-top: 1.75rem;
+  align-items: stretch;
+}
+
+/* Individual service card inside the grid */
 .service-card {
-  flex: 1 1 280px;   /* responsive width */
-  max-width: 340px;  /* don’t get too wide */
   min-height: 260px;
 }
 
@@ -918,6 +917,34 @@ button[type="submit"]:hover {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  /* Desktop hero: two columns */
+@media (min-width: 900px) {
+  .hero {
+    flex-direction: row;        /* side-by-side */
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-text {
+    flex: 1.3;
+  }
+
+  .hero-text p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .hero-panel {
+    flex: 1;
+    max-width: 380px;
+    margin-top: 0;              /* remove extra gap when beside hero-text */
+  }
+}
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
