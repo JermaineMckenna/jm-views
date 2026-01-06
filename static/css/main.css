@@ -1,5 +1,4 @@
-/* =============== GLOBAL RESET + THEME =============== */
-
+/* ========== GLOBAL RESET ========== */
 *,
 *::before,
 *::after {
@@ -16,11 +15,12 @@
   --border-soft: #e5e7eb;
 }
 
-/* =============== BASE LAYOUT =============== */
+/* ========== BASE LAYOUT & TYPOGRAPHY ========== */
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   background: var(--bg);
   color: var(--text-main);
 }
@@ -45,7 +45,7 @@ main.container {
   padding-bottom: 2.5rem;
 }
 
-/* Flash messages */
+/* Messages */
 
 .messages {
   list-style: none;
@@ -57,7 +57,33 @@ main.container {
   font-size: 0.9rem;
 }
 
-/* =============== NAVBAR =============== */
+/* Typography */
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+p {
+  line-height: 1.6;
+  margin-top: 0;
+}
+
+/* Optional intro on About */
+
+.about-intro {
+  max-width: 680px;
+  margin-bottom: 1.5rem;
+  font-size: 0.98rem;
+  color: var(--text-muted);
+}
+
+/* ========== NAVBAR ========== */
 
 .navbar {
   background: #ffffff;
@@ -71,7 +97,7 @@ main.container {
   gap: 1rem;
 }
 
-/* Logo / brand */
+/* Logo */
 
 .logo {
   font-weight: 800;
@@ -116,51 +142,26 @@ main.container {
   text-decoration: none;
 }
 
-/* =============== TYPOGRAPHY =============== */
+/* ========== HERO (HOME PAGE) ========== */
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
-}
-
-h2 {
-  font-size: 1.25rem;
-  margin-bottom: 0.4rem;
-}
-
-p {
-  line-height: 1.6;
-  margin-top: 0;
-}
-
-/* About intro */
-
-.about-intro {
-  max-width: 680px;
-  margin-bottom: 1.5rem;
-  font-size: 0.98rem;
-  color: var(--text-muted);
-}
-
-/* =============== HERO (HOME) =============== */
-
+/* Make the hero a centered column on all screen sizes. */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
-  gap: 2rem;
+  max-width: 900px;
+  margin: 2.5rem auto 3rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 2rem 0 2.5rem;
+  text-align: center;
 }
 
-.hero-text p {
-  color: var(--text-muted);
-}
+/* Hero badges, heading, copy */
 
 .hero-badges {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hero-badge {
@@ -171,20 +172,32 @@ p {
   color: var(--accent);
 }
 
+.hero-text p {
+  color: var(--text-muted);
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hero-actions {
   margin-top: 1.25rem;
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
+/* “What I can help with” card */
 .hero-panel {
+  margin-top: 2rem;
   background: var(--bg-card);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--border-soft);
   font-size: 0.9rem;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  max-width: 520px;
+  width: 100%;
+  text-align: left;
 }
 
 .hero-panel ul {
@@ -192,7 +205,7 @@ p {
   margin: 0.25rem 0 0;
 }
 
-/* =============== BUTTONS =============== */
+/* ========== BUTTONS ========== */
 
 .btn {
   display: inline-block;
@@ -224,10 +237,10 @@ p {
   text-decoration: none;
 }
 
-/* =============== SECTION SPACING =============== */
+/* ========== GENERIC SECTION SPACING ========== */
 
 .home-section {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .home-section h2 {
@@ -236,13 +249,12 @@ p {
 
 .home-section p {
   max-width: 640px;
-  color: var(--text-muted);
 }
 
-/* =============== PHOTOGRAPHY HIGHLIGHTS =============== */
+/* ========== PHOTOGRAPHY HIGHLIGHTS ========== */
 
 .home-photography {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .home-section-header {
@@ -251,7 +263,7 @@ p {
   text-align: center;
 }
 
-/* Simple logo helper for About page */
+/* About-page logo */
 
 .about-logo {
   text-align: center;
@@ -264,7 +276,7 @@ p {
   display: inline-block;
 }
 
-/* Photo grid on home */
+/* Photo grid */
 
 .photo-grid {
   display: grid;
@@ -297,9 +309,9 @@ p {
   margin-top: 1.5rem;
 }
 
-/* =============== GENERIC CARD GRIDS =============== */
+/* ========== CARD GRIDS (HOME + SERVICES) ========== */
 
-/* Shared grid wrapper (home + services + portfolio sections) */
+/* Shared grid wrapper */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -307,65 +319,37 @@ p {
   align-items: stretch;
 }
 
-/* Base card */
+/* Generic card */
 .card {
   background: var(--bg-card);
   border-radius: 12px;
   padding: 1.25rem 1.3rem;
   border: 1px solid var(--border-soft);
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+
+  /* Make all cards equal height in a row */
+  display: flex;
+  flex-direction: column;
 }
 
 .card p {
   font-size: 0.95rem;
 }
 
-/* === Services cards (used on Services page & Featured services) === */
-
-.card-service {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-service header {
-  margin-bottom: 0.6rem;
-}
-
+/* Meta line for service category on cards */
 .card-service-meta {
   font-size: 0.8rem;
   color: var(--text-muted);
   margin-bottom: 0.4rem;
 }
 
-/* Price + button pinned to bottom */
-.card-service-footer {
-  margin-top: auto;
-  padding-top: 0.9rem;
+/* Make the price + button sit at the bottom of the card */
+.card .btn {
+  margin-top: 0.9rem;
+  align-self: flex-start;
 }
 
-.card-service-footer p {
-  margin: 0 0 0.6rem;
-  font-weight: 600;
-}
-
-.card-service-footer .btn {
-  width: 100%;
-  text-align: center;
-}
-
-/* Extra layout for services page “tile” style */
-.service-card {
-  background: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.25rem 1.3rem;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 260px;
-  max-width: 320px;
-  margin: 0;
-}
+/* ========== SERVICES PAGE SPECIAL LAYOUT ========== */
 
 .services-grid {
   display: flex;
@@ -374,7 +358,36 @@ p {
   align-items: stretch;
 }
 
-/* =============== DRONE HERO =============== */
+.service-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 260px;
+  max-width: 320px;
+  margin: 0;
+}
+
+.service-card-footer {
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+.service-card-footer p {
+  margin: 0 0 0.6rem;
+  font-weight: 600;
+}
+
+.service-card-footer .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* ========== DRONE HERO SECTION ========== */
 
 .drone-hero {
   margin-top: 3rem;
@@ -400,7 +413,7 @@ p {
   margin-top: 1rem;
 }
 
-/* =============== PORTFOLIO CARDS (HOME + PORTFOLIO PAGE) =============== */
+/* ========== PORTFOLIO CARDS & COLLECTIONS ========== */
 
 .portfolio-grid {
   display: grid;
@@ -414,6 +427,9 @@ p {
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
   border: 1px solid var(--border-soft);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .portfolio-card-image-wrap img {
@@ -431,14 +447,43 @@ p {
   font-size: 0.9rem;
 }
 
-/* Meta line under title – e.g. “Photography · Portraits & Lifestyle” */
 .portfolio-card-meta {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-top: 0.2rem;
 }
 
-/* =============== PORTFOLIO DETAIL (single project) =============== */
+/* Case-study style project card */
+
+.project-card {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.project-card img,
+.project-card video {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-meta {
+  padding: 1.2rem 1.6rem 1.6rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.project-section {
+  margin-top: 0.25rem;
+  opacity: 0.8;
+}
+
+/* Single portfolio detail page */
 
 .portfolio-detail {
   max-width: 900px;
@@ -468,7 +513,6 @@ p {
   color: var(--text-muted);
 }
 
-/* Large media on project detail */
 .portfolio-detail img,
 .portfolio-detail-media img,
 .portfolio-video {
@@ -512,7 +556,7 @@ p {
   text-decoration: none;
 }
 
-/* Sections on portfolio page */
+/* Portfolio sections / collection page */
 
 .portfolio-section {
   margin-top: 0.25rem;
@@ -539,8 +583,6 @@ p {
 .portfolio-section-empty {
   font-style: italic;
 }
-
-/* Collections (by type / section) */
 
 .collection-header {
   margin-bottom: 2rem;
@@ -593,7 +635,7 @@ p {
   letter-spacing: 0.2px;
 }
 
-/* =============== CONTACT HELPERS =============== */
+/* ========== CONTACT PAGE HELPERS ========== */
 
 .contact-location {
   max-width: 640px;
@@ -608,7 +650,7 @@ p {
   color: var(--text-muted);
 }
 
-/* =============== TESTIMONIALS =============== */
+/* ========== TESTIMONIALS ========== */
 
 .testimonials {
   margin-top: 3rem;
@@ -656,7 +698,7 @@ p {
   margin-left: 0.25rem;
 }
 
-/* =============== FORMS =============== */
+/* ========== FORMS ========== */
 
 form div {
   margin-bottom: 1rem;
@@ -700,7 +742,7 @@ button[type="submit"]:hover {
   background: #1d4ed8;
 }
 
-/* =============== FOOTER =============== */
+/* ========== FOOTER ========== */
 
 .footer {
   background: #fafafb;
@@ -798,23 +840,10 @@ button[type="submit"]:hover {
   transform: translateY(-2px);
 }
 
-/* =============== RESPONSIVE =============== */
+/* ========== RESPONSIVE ========== */
 
 @media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
   .navbar .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .portfolio-detail {
-    max-width: 100%;
-  }
-
-  .portfolio-detail-footer {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -822,9 +851,17 @@ button[type="submit"]:hover {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .drone-video {
+    height: 260px;
+  }
+
+  .hero {
+    margin-top: 2rem;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .footer-grid {
     grid-template-columns: 1fr;
   }

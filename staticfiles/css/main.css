@@ -1,4 +1,5 @@
-/* Global reset-ish */
+/* =============== GLOBAL RESET + THEME =============== */
+
 *,
 *::before,
 *::after {
@@ -15,10 +16,9 @@
   --border-soft: #e5e7eb;
 }
 
-/* Base layout */
+/* =============== BASE LAYOUT =============== */
 
 body {
-  outline: 6px solid magneta !important;
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
@@ -40,7 +40,24 @@ a:hover {
   padding: 1rem 1.5rem;
 }
 
-/* Navbar */
+main.container {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Flash messages */
+
+.messages {
+  list-style: none;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1rem 0;
+  background: #e9ffe9;
+  border: 1px solid #b2e0b2;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* =============== NAVBAR =============== */
 
 .navbar {
   background: #ffffff;
@@ -54,7 +71,7 @@ a:hover {
   gap: 1rem;
 }
 
-/* Creative studio logo */
+/* Logo / brand */
 
 .logo {
   font-weight: 800;
@@ -79,6 +96,8 @@ a:hover {
   font-weight: 700;
 }
 
+/* Nav links */
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -97,26 +116,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* Page structure */
-
-main.container {
-  padding-top: 1.5rem;
-  padding-bottom: 2.5rem;
-}
-
-/* Messages */
-
-.messages {
-  list-style: none;
-  padding: 0.75rem 1rem;
-  margin: 0 0 1rem 0;
-  background: #e9ffe9;
-  border: 1px solid #b2e0b2;
-  border-radius: 6px;
-  font-size: 0.9rem;
-}
-
-/* Typography */
+/* =============== TYPOGRAPHY =============== */
 
 h1 {
   font-size: 2rem;
@@ -133,7 +133,7 @@ p {
   margin-top: 0;
 }
 
-/* Optional short intro block on About page */
+/* About intro */
 
 .about-intro {
   max-width: 680px;
@@ -142,14 +142,14 @@ p {
   color: var(--text-muted);
 }
 
-/* Hero section (home page) */
+/* =============== HERO (HOME) =============== */
 
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
   gap: 2rem;
   align-items: center;
-  padding: 2.5rem 0 2.75rem;
+  padding: 2rem 0 2.5rem;
 }
 
 .hero-text p {
@@ -184,6 +184,7 @@ p {
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--border-soft);
   font-size: 0.9rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .hero-panel ul {
@@ -191,7 +192,7 @@ p {
   margin: 0.25rem 0 0;
 }
 
-/* Buttons */
+/* =============== BUTTONS =============== */
 
 .btn {
   display: inline-block;
@@ -223,10 +224,10 @@ p {
   text-decoration: none;
 }
 
-/* Section spacing */
+/* =============== SECTION SPACING =============== */
 
 .home-section {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .home-section h2 {
@@ -235,12 +236,13 @@ p {
 
 .home-section p {
   max-width: 640px;
+  color: var(--text-muted);
 }
 
-/* ---------- PHOTOGRAPHY HIGHLIGHTS SECTION ---------- */
+/* =============== PHOTOGRAPHY HIGHLIGHTS =============== */
 
 .home-photography {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .home-section-header {
@@ -249,7 +251,7 @@ p {
   text-align: center;
 }
 
-/* About-page logo */
+/* Simple logo helper for About page */
 
 .about-logo {
   text-align: center;
@@ -262,13 +264,12 @@ p {
   display: inline-block;
 }
 
-/* ---------- PHOTO GRID (home) ---------- */
+/* Photo grid on home */
 
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
-  align-items: stretch;
 }
 
 .photo-card {
@@ -296,8 +297,9 @@ p {
   margin-top: 1.5rem;
 }
 
-/* ---------- Services & portfolio grids ---------- */
+/* =============== GENERIC CARD GRIDS =============== */
 
+/* Shared grid wrapper (home + services + portfolio sections) */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -305,8 +307,7 @@ p {
   align-items: stretch;
 }
 
-/* Generic card base */
-
+/* Base card */
 .card {
   background: var(--bg-card);
   border-radius: 12px;
@@ -319,7 +320,7 @@ p {
   font-size: 0.95rem;
 }
 
-/* Service cards – text at top, footer at bottom */
+/* === Services cards (used on Services page & Featured services) === */
 
 .card-service {
   display: flex;
@@ -336,6 +337,7 @@ p {
   margin-bottom: 0.4rem;
 }
 
+/* Price + button pinned to bottom */
 .card-service-footer {
   margin-top: auto;
   padding-top: 0.9rem;
@@ -351,7 +353,28 @@ p {
   text-align: center;
 }
 
-/* ---------- Drone hero (home) ---------- */
+/* Extra layout for services page “tile” style */
+.service-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 260px;
+  max-width: 320px;
+  margin: 0;
+}
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* =============== DRONE HERO =============== */
 
 .drone-hero {
   margin-top: 3rem;
@@ -377,13 +400,12 @@ p {
   margin-top: 1rem;
 }
 
-/* ---------- PORTFOLIO CARDS (used on home + collections) ---------- */
+/* =============== PORTFOLIO CARDS (HOME + PORTFOLIO PAGE) =============== */
 
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
-  align-items: stretch;
 }
 
 .portfolio-card {
@@ -409,43 +431,14 @@ p {
   font-size: 0.9rem;
 }
 
+/* Meta line under title – e.g. “Photography · Portraits & Lifestyle” */
 .portfolio-card-meta {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-top: 0.2rem;
 }
 
-/* ---------- CASE STUDY / PROJECT CARD ---------- */
-
-.project-card {
-  max-width: 1200px;
-  margin: 0 auto 3rem;
-  background: white;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-}
-
-.project-card img,
-.project-card video {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-.project-meta {
-  padding: 1.2rem 1.6rem 1.6rem;
-  color: #666;
-  font-size: 0.95rem;
-}
-
-.project-section {
-  margin-top: 0.25rem;
-  opacity: 0.8;
-}
-
-/* ---------- Portfolio detail (single project page) ---------- */
+/* =============== PORTFOLIO DETAIL (single project) =============== */
 
 .portfolio-detail {
   max-width: 900px;
@@ -475,8 +468,7 @@ p {
   color: var(--text-muted);
 }
 
-/* Big image on project detail page */
-
+/* Large media on project detail */
 .portfolio-detail img,
 .portfolio-detail-media img,
 .portfolio-video {
@@ -520,7 +512,7 @@ p {
   text-decoration: none;
 }
 
-/* ---------- Portfolio sections / collections ---------- */
+/* Sections on portfolio page */
 
 .portfolio-section {
   margin-top: 0.25rem;
@@ -548,6 +540,8 @@ p {
   font-style: italic;
 }
 
+/* Collections (by type / section) */
+
 .collection-header {
   margin-bottom: 2rem;
 }
@@ -556,8 +550,6 @@ p {
   max-width: 640px;
   color: var(--text-muted);
 }
-
-/* Each sub-section block (e.g. Portraits & Lifestyle) */
 
 .collection-section {
   margin-bottom: 3rem;
@@ -580,8 +572,6 @@ p {
   color: var(--text-muted);
 }
 
-/* Grid of cards inside each section */
-
 .collection-section-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -603,7 +593,7 @@ p {
   letter-spacing: 0.2px;
 }
 
-/* ---------- Contact page helpers ---------- */
+/* =============== CONTACT HELPERS =============== */
 
 .contact-location {
   max-width: 640px;
@@ -618,7 +608,7 @@ p {
   color: var(--text-muted);
 }
 
-/* ---------- Testimonials ---------- */
+/* =============== TESTIMONIALS =============== */
 
 .testimonials {
   margin-top: 3rem;
@@ -666,7 +656,7 @@ p {
   margin-left: 0.25rem;
 }
 
-/* ---------- Forms ---------- */
+/* =============== FORMS =============== */
 
 form div {
   margin-bottom: 1rem;
@@ -710,7 +700,7 @@ button[type="submit"]:hover {
   background: #1d4ed8;
 }
 
-/* ---------- Footer ---------- */
+/* =============== FOOTER =============== */
 
 .footer {
   background: #fafafb;
@@ -808,15 +798,18 @@ button[type="submit"]:hover {
   transform: translateY(-2px);
 }
 
-/* ---------- Responsive tweaks ---------- */
+/* =============== RESPONSIVE =============== */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .portfolio-detail {
     max-width: 100%;
   }
@@ -829,8 +822,10 @@ button[type="submit"]:hover {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+}
 
-  .hero {
-    padding-top: 1.8rem;
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
 }
