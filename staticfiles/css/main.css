@@ -33,10 +33,16 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Main page container */
 .container {
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 1.25rem;
+}
+
+main.container {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
 
 /* Navbar */
@@ -98,13 +104,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* Page structure */
-
-main.container {
-  padding-top: 1.5rem;
-  padding-bottom: 2.5rem;
-}
-
 /* Messages */
 
 .messages {
@@ -151,6 +150,8 @@ p {
   gap: 2rem;
   align-items: center;
   padding: 2rem 0 2.5rem;
+  max-width: 960px;
+  margin: 0 auto 2.5rem; /* centers hero inside the page */
 }
 
 .hero-text p {
@@ -228,6 +229,9 @@ p {
 
 .home-section {
   margin-top: 2.5rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto; /* centers sections like Photography, Drone, Featured services */
 }
 
 .home-section h2 {
@@ -267,34 +271,26 @@ p {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
-  justify-items: center;
+  justify-content: center; /* keeps three cards nicely centered */
 }
 
-/* ---------- Shared card styling (photo & portfolio cards) ---------- */
-
-.photo-card,
-.portfolio-card {
+.photo-card {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
 }
 
-.photo-card img,
-.portfolio-card-image-wrap img {
+.photo-card img {
   width: 100%;
   height: 260px;
   object-fit: cover;
   display: block;
 }
 
-.photo-card figcaption,
-.portfolio-card-body {
+.photo-card figcaption {
   padding: 0.75rem 1rem 1rem;
   font-size: 0.9rem;
   color: #555;
@@ -313,6 +309,7 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   align-items: stretch;
+  justify-content: center;
 }
 
 /* Generic card base */
@@ -322,6 +319,17 @@ p {
   padding: 1.25rem 1.3rem;
   border: 1px solid var(--border-soft);
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make all cards visually same height in a row */
+.card,
+.portfolio-card,
+.photo-card,
+.service-card {
+  min-height: 260px;
 }
 
 .card p {
@@ -360,7 +368,42 @@ p {
   text-align: center;
 }
 
-/* ---------- DRONE SECTION ---------- */
+/* Dedicated services grid (services page) */
+
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* Slightly narrower service card so they line up in nice columns */
+.service-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 260px;
+  max-width: 320px;
+  margin: 0;
+}
+
+.service-card-footer {
+  margin-top: auto;     /* pushes price + button to bottom */
+  padding-top: 0.9rem;
+}
+
+.service-card-footer .btn {
+  width: 100%;
+  text-align: center;
+}
+
+/* ---------- Drone home section ---------- */
 
 .drone-hero {
   margin-top: 3rem;
@@ -390,14 +433,32 @@ p {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
-  justify-items: center;
+  justify-content: center;
 }
 
 .portfolio-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
   border: 1px solid var(--border-soft);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-card-image-wrap img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio-card-body {
+  padding: 0.85rem 1rem 1rem;
+  flex: 1 0 auto;
 }
 
 .portfolio-card-body p {
@@ -579,6 +640,7 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+  justify-content: center;
 }
 
 .collection-section-empty {
@@ -611,7 +673,7 @@ p {
   color: var(--text-muted);
 }
 
-/* ---------- Testimonials (ready for future use) ---------- */
+/* ---------- Testimonials ---------- */
 
 .testimonials {
   margin-top: 3rem;
@@ -662,6 +724,15 @@ p {
 /* ---------- Responsive: portfolio detail + footer + hero ---------- */
 
 @media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .hero-panel {
+    margin-top: 1rem;
+  }
+
   .portfolio-detail {
     max-width: 100%;
   }
@@ -669,6 +740,10 @@ p {
   .portfolio-detail-footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .services-grid {
+    justify-content: stretch;
   }
 }
 
@@ -820,50 +895,4 @@ button[type="submit"]:hover {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
-}
-
-/* Responsive tweaks */
-
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .navbar .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ---- Final overrides for Services layout ---- */
-
-.service-card {
-  background: var(--bg-card);
-  border-radius: 12px;
-  padding: 1.25rem 1.3rem;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
-
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 260px;   /* layout */
-  max-width: 320px;
-  margin: 0;
-}
-
-.services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.service-card-footer {
-  margin-top: auto;      /* pushes price + button to bottom */
-  padding-top: 0.9rem;
-}
-
-.service-card-footer .btn {
-  width: 100%;
-  text-align: center;
 }
